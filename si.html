@@ -1,15 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Preguntale a tu flaca</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maria Alejandra la quiero</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .question {
+      display: none;
+      margin-top: 20px;
+    }
+    .visible {
+      display: block;
+    }
+    .container {
+      text-align: center;
+      padding: 40px;
+    }
+    button {
+      margin: 10px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="tenor-gif-embed" data-postid="11000679121036284802" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/khanov1-gif-11000679121036284802">Khanov1 GIF</a>from <a href="https://tenor.com/search/khanov1-gifs">Khanov1 GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-        <h1>Heheheh, Lo sabia!!! </h1>
+  <div class="container">
+    <div class="tenor-gif-embed" data-postid="11000679121036284802" data-share-method="host" data-aspect-ratio="1" data-width="100%">
+      <a href="https://tenor.com/view/khanov1-gif-11000679121036284802">Khanov1 GIF</a> from 
+      <a href="https://tenor.com/search/khanov1-gifs">Khanov1 GIFs</a>
     </div>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+    <div id="questions">
+      <div class="question visible" id="q0">
+        <p>¿Te gusta la pizza?</p>
+        <button onclick="nextQuestion(true)">Sí</button>
+        <button onclick="nextQuestion(false)">No</button>
+      </div>
+      <div class="question" id="q1">
+        <p>¿Te gusta el chocolate?</p>
+        <button onclick="nextQuestion(true)">Sí</button>
+        <button onclick="nextQuestion(false)">No</button>
+      </div>
+      <div class="question" id="q2">
+        <p>¿Quieres seguir conociéndome? 😳</p>
+        <button onclick="nextQuestion(true)">Sí</button>
+        <button onclick="nextQuestion(false)">No</button>
+      </div>
+      <div class="question" id="end">
+        <p>¡Gracias por tus respuestas! 💖</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentQuestion = 0;
+
+    function nextQuestion(answer) {
+      document.getElementById(`q${currentQuestion}`).classList.remove('visible');
+      if (answer && document.getElementById(`q${currentQuestion + 1}`)) {
+        currentQuestion++;
+        document.getElementById(`q${currentQuestion}`).classList.add('visible');
+      } else {
+        document.getElementById('end').classList.add('visible');
+      }
+    }
+  </script>
 </body>
 </html>
