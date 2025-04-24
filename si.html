@@ -17,6 +17,12 @@
       text-align: center;
       padding: 40px;
     }
+    .no-message {
+      display: none;
+      margin-top: 10px;
+      color: #d14;
+      font-style: italic;
+    }
     button {
       margin: 10px;
     }
@@ -32,23 +38,35 @@
 
     <div id="questions">
       <div class="question visible" id="q0">
-        <p>¿Te gusta la pizza?</p>
+        <p>¿Sabia que es una mujer preciosa y que me encanta?</p>
         <button onclick="nextQuestion(true)">Sí</button>
-        <button onclick="nextQuestion(false)">No</button>
+        <button onclick="handleNo(0)">No</button>
+        <div class="no-message" id="no-msg-0">
+          <p>Pues quiero que sepa que es mi reina hermosa y preciosa y que me encanta muchisimo, demaasiado mi amor</p>
+          <button onclick="continueToNext()">Seguir</button>
+        </div>
       </div>
+
       <div class="question" id="q1">
-        <p>¿Te gusta el chocolate?</p>
+        <p>¿sabe que me encanta que haya aparecido en mi vida?</p>
         <button onclick="nextQuestion(true)">Sí</button>
-        <button onclick="nextQuestion(false)">No</button>
+        <button onclick="handleNo(1)">No</button>
+        <div class="no-message" id="no-msg-1">
+          <p>Es lo mas bonito que me ha pasado, me gusta tanto y me siento muy bien con usted, la quiero tanto</p>
+          <button onclick="continueToNext()">Seguir</button>
+        </div>
       </div>
+
       <div class="question" id="q2">
-        <p>¿Quieres seguir conociéndome? 😳</p>
+        <p>Bueno, ahora que sabe todo lo que quiero expresarle, me da usted la dicha de ... </p>
         <button onclick="nextQuestion(true)">Sí</button>
-        <button onclick="nextQuestion(false)">No</button>
+       <a href="no1.html">NO</a>
+        <div class="no-message" id="no-msg-2">
+          <button onclick="continueToNext()">Seguir</button>
+        </div>
       </div>
-      <div class="question" id="end">
-        <p>¡Gracias por tus respuestas! 💖</p>
-      </div>
+
+     
     </div>
   </div>
 
@@ -57,8 +75,23 @@
 
     function nextQuestion(answer) {
       document.getElementById(`q${currentQuestion}`).classList.remove('visible');
-      if (answer && document.getElementById(`q${currentQuestion + 1}`)) {
-        currentQuestion++;
+      currentQuestion++;
+      showNext();
+    }
+
+    function handleNo(index) {
+      document.getElementById(`no-msg-${index}`).classList.add('visible');
+    }
+
+    function continueToNext() {
+      document.getElementById(`q${currentQuestion}`).classList.remove('visible');
+      document.getElementById(`no-msg-${currentQuestion}`).classList.remove('visible');
+      currentQuestion++;
+      showNext();
+    }
+
+    function showNext() {
+      if (document.getElementById(`q${currentQuestion}`)) {
         document.getElementById(`q${currentQuestion}`).classList.add('visible');
       } else {
         document.getElementById('end').classList.add('visible');
