@@ -38,35 +38,30 @@
 
     <div id="questions">
       <div class="question visible" id="q0">
-        <p>¿Sabia que es una mujer preciosa y que me encanta?</p>
+        <p>¿Sabía que es una mujer preciosa y que me encanta?</p>
         <button onclick="nextQuestion(true)">Sí</button>
         <button onclick="handleNo(0)">No</button>
         <div class="no-message" id="no-msg-0">
-          <p>Pues quiero que sepa que es mi reina hermosa y preciosa y que me encanta muchisimo, demaasiado mi amor</p>
+          <p>Pues quiero que sepa que es mi reina hermosa y preciosa y que me encanta muchísimo, demasiado mi amor ❤️</p>
           <button onclick="continueToNext()">Seguir</button>
         </div>
       </div>
 
       <div class="question" id="q1">
-        <p>¿sabe que me encanta que haya aparecido en mi vida?</p>
+        <p>¿Sabe que me encanta que haya aparecido en mi vida?</p>
         <button onclick="nextQuestion(true)">Sí</button>
         <button onclick="handleNo(1)">No</button>
         <div class="no-message" id="no-msg-1">
-          <p>Es lo mas bonito que me ha pasado, me gusta tanto y me siento muy bien con usted, la quiero tanto</p>
+          <p>Es lo más bonito que me ha pasado, me gusta tanto y me siento muy bien con usted, la quiero tanto 💕</p>
           <button onclick="continueToNext()">Seguir</button>
         </div>
       </div>
 
       <div class="question" id="q2">
-        <p>Bueno, ahora que sabe todo lo que quiero expresarle, me da usted la dicha de ... </p>
-        <button onclick="nextQuestion(true)">Sí</button>
-       <a href="no1.html">NO</a>
-        <div class="no-message" id="no-msg-2">
-          <button onclick="continueToNext()">Seguir</button>
-        </div>
+        <p>Bueno, ahora que sabe todo lo que quiero expresarle, ¿me da usted la dicha de...?</p>
+        <button onclick="window.location.href='si.html'">Sí</button>
+        <button onclick="window.location.href='no1.html'">No</button>
       </div>
-
-     
     </div>
   </div>
 
@@ -91,10 +86,9 @@
     }
 
     function showNext() {
-      if (document.getElementById(`q${currentQuestion}`)) {
-        document.getElementById(`q${currentQuestion}`).classList.add('visible');
-      } else {
-        document.getElementById('end').classList.add('visible');
+      const next = document.getElementById(`q${currentQuestion}`);
+      if (next) {
+        next.classList.add('visible');
       }
     }
   </script>
