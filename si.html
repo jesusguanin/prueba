@@ -39,21 +39,21 @@
     <div id="questions">
       <div class="question visible" id="q0">
         <p>¿Sabía que es una mujer preciosa y que me encanta?</p>
-        <button onclick="nextQuestion(true)">Sí</button>
+        <button onclick="nextQuestion()">Sí</button>
         <button onclick="handleNo(0)">No</button>
         <div class="no-message" id="no-msg-0">
           <p>Pues quiero que sepa que es mi reina hermosa y preciosa y que me encanta muchísimo, demasiado mi amor ❤️</p>
-          <button onclick="continueToNext()">Seguir</button>
+          <button onclick="continueToNext(0)">Seguir</button>
         </div>
       </div>
 
       <div class="question" id="q1">
         <p>¿Sabe que me encanta que haya aparecido en mi vida?</p>
-        <button onclick="nextQuestion(true)">Sí</button>
+        <button onclick="nextQuestion()">Sí</button>
         <button onclick="handleNo(1)">No</button>
         <div class="no-message" id="no-msg-1">
           <p>Es lo más bonito que me ha pasado, me gusta tanto y me siento muy bien con usted, la quiero tanto 💕</p>
-          <button onclick="continueToNext()">Seguir</button>
+          <button onclick="continueToNext(1)">Seguir</button>
         </div>
       </div>
 
@@ -68,19 +68,21 @@
   <script>
     let currentQuestion = 0;
 
-    function nextQuestion(answer) {
+    function nextQuestion() {
       document.getElementById(`q${currentQuestion}`).classList.remove('visible');
       currentQuestion++;
       showNext();
     }
 
     function handleNo(index) {
-      document.getElementById(`no-msg-${index}`).classList.add('visible');
+      // Solo muestra el mensaje sin avanzar la pregunta
+      document.getElementById(`no-msg-${index}`).style.display = 'block';
     }
 
-    function continueToNext() {
-      document.getElementById(`q${currentQuestion}`).classList.remove('visible');
-      document.getElementById(`no-msg-${currentQuestion}`).classList.remove('visible');
+    function continueToNext(index) {
+      // Oculta la pregunta actual y su mensaje, y avanza
+      document.getElementById(`q${index}`).classList.remove('visible');
+      document.getElementById(`no-msg-${index}`).style.display = 'none';
       currentQuestion++;
       showNext();
     }
